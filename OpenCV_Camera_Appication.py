@@ -15,7 +15,7 @@ class_label_lookup={0:'Zero',1:'One',2:'Two',3:'Five',4:'I',5:'L',6:'U',7:'Unkno
 loaded_model = tf.keras.models.load_model('Models/M1_D1')
 
 #Initialising Input dimension on which the CNN was trained 
-#(Converts image to specified dimension before Classification)
+#Converts image to specified dimension before Classification
 input_height = 64
 input_width = 64
 
@@ -29,7 +29,7 @@ rect_pt2 = (int(width),int(height*0.80))
 count=0
 
 fourcc = cv2.VideoWriter_fourcc(*'XVID')
-out = cv2.VideoWriter('output.mp4',fourcc, 20.0, (640,480))
+
 
 while(True):
 
@@ -59,8 +59,6 @@ while(True):
 
     frame = cv2.putText(frame, 'Class:'+str(class_name), org=(rect_pt1[0],rect_pt1[1]+25),fontFace=cv2.FONT_HERSHEY_SIMPLEX,fontScale=0.3,color=(255,0,0))
 
-    out.write(frame)
-
     cv2.namedWindow('frame', cv2.WINDOW_NORMAL)
 
     cv2.imshow('frame',frame)
@@ -71,5 +69,4 @@ while(True):
 
 # When everything done, release the capture
 cap.release()
-out.release()
 cv2.destroyAllWindows()
