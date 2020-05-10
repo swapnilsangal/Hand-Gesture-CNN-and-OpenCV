@@ -9,7 +9,7 @@ import numpy as np
 import cv2
 import tensorflow as tf
 
-#Dictionary for Class Lables to the corresponding output layer for the CNN.
+#Dictionary for Class Lables to the corresponding output layer for the CNN
 class_label_lookup={0:'Zero',1:'One',2:'Two',3:'Five',4:'I',5:'L',6:'U',7:'Unknown'}
 
 #Load the pretrained tensorflow Classification CNN model
