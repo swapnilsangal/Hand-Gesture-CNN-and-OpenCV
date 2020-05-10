@@ -5,7 +5,6 @@ Created on Wed May  6 23:26:03 2020
 @author: Swapnil Sangal
 """
 
-import numpy as np
 import cv2
 import tensorflow as tf
 
@@ -48,7 +47,6 @@ while(True):
         cropped_gray_inpt = cropped_gray_inpt/255
         cropped_gray_inpt = cropped_gray_inpt.reshape(-1,input_width,input_height,1)
 
-        cv2.imshow('cropped_frame',cropped_gray)
         predicted_class = loaded_model.predict_classes(cropped_gray_inpt)
         class_name = class_label_lookup[predicted_class[0]]
 
