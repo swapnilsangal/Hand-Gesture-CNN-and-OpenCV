@@ -14,6 +14,8 @@ class_label_lookup={0:'Zero',1:'One',2:'Two',3:'Five',4:'I',5:'L',6:'U',7:'Unkno
 #Load the pretrained tensorflow Classification CNN model
 loaded_model = tf.keras.models.load_model('Models/M1_D1')
 
+#Initialising Input dimension on which the CNN was trained 
+#(Converts image to specified dimension before Classification)
 input_height = 64
 input_width = 64
 
