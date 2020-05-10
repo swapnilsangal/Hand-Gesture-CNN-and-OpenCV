@@ -36,15 +36,13 @@ while(True):
     ret, frame = cap.read()
 
     frame = cv2.flip(frame,1)
-
+    
+    cropped = frame[rect_pt1[1]:rect_pt2[1] , rect_pt1[0]:rect_pt2[0]]
+    cropped_gray = cv2.cvtColor(cropped, cv2.COLOR_BGR2GRAY)
+        
     if count%50==0:
         count=0
         cv2.rectangle(frame, rect_pt1, rect_pt2, color=(0,255,0))
-
-        cropped = frame[rect_pt1[1]:rect_pt2[1] , rect_pt1[0]:rect_pt2[0]]
-
-        cropped_gray = cv2.cvtColor(cropped, cv2.COLOR_BGR2GRAY)
-
         cropped_gray_inpt = cv2.resize(cropped_gray,(input_height,input_width))
         cropped_gray_inpt = cropped_gray_inpt/255
         cropped_gray_inpt = cropped_gray_inpt.reshape(-1,input_width,input_height,1)
@@ -55,12 +53,13 @@ while(True):
 
     else:
         cv2.rectangle(frame, rect_pt1, rect_pt2, color=(255,0,0))
+    # Frame Count Incrementer
     count = count+1
-
-    frame = cv2.putText(frame, 'Class:'+str(class_name), org=(rect_pt1[0],rect_pt1[1]+25),fontFace=cv2.FONT_HERSHEY_SIMPLEX,fontScale=0.3,color=(255,0,0))
 
     cv2.namedWindow('Hand Gesture Project', cv2.WINDOW_NORMAL)
     
+    #Show the whole frame
+    '''
     # Blurring the rest of the window
     blur_region1 = frame[0:height, 0:int(width*0.70)]
     blur_region2 = frame[0:int(height*0.20), int(width*0.70):width]
@@ -76,8 +75,14 @@ while(True):
     frame[int(height*0.80)+1:height, int(width*0.70):width] = blur_frame
     
     
-    cv2.imshow('frame',frame)
-
+    frame = cv2.putText(frame, 'Class:'+str(class_name), org=(rect_pt1[0],rect_pt1[1]+25),fontFace=cv2.FONT_HERSHEY_SIMPLEX,fontScale=0.3,color=(255,0,0))
+    cv2.imshow('Hand Gesture Project',frame)
+    '''
+    
+    #Show the cropped and processed frame only
+    cropped_gray = cv2.putText(cropped_gray, 'Class:'+str(class_name), org=(10,20),fontFace=cv2.FONT_HERSHEY_SIMPLEX,fontScale=0.5,color=(255,0,0))
+    cv2.imshow('Hand Gesture Project',cropped_gray)
+    
 
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
