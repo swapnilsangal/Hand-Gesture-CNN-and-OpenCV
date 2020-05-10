@@ -59,7 +59,7 @@ while(True):
 
     frame = cv2.putText(frame, 'Class:'+str(class_name), org=(rect_pt1[0],rect_pt1[1]+25),fontFace=cv2.FONT_HERSHEY_SIMPLEX,fontScale=0.3,color=(255,0,0))
 
-    cv2.namedWindow('frame', cv2.WINDOW_NORMAL)
+    cv2.namedWindow('Hand Gesture Project', cv2.WINDOW_NORMAL)
     
     # Blurring the rest of the window
     blur_region1 = frame[0:height, 0:int(width*0.70)]
