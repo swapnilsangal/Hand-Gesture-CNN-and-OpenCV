@@ -9,7 +9,7 @@ import cv2
 import tensorflow as tf
 
 #Dictionary for Class Lables to the corresponding output layer for the CNN
-class_label_lookup={0:'Zero',1:'One',2:'Two',3:'Three',4:'Four',5:'Five',6:'A',7:'I',8:'Unknown'}
+class_label_lookup={0:'Zero',1:'One',2:'Two',3:'Three',4:'Four',5:'Five',6:'A',7:'I',8:'Undefined'}
 
 #Load the pretrained tensorflow Classification CNN model
 loaded_model = tf.keras.models.load_model('Models/M1_D3')
