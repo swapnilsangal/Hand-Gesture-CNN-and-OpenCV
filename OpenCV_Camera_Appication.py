@@ -39,7 +39,10 @@ while(True):
     
     cropped = frame[rect_pt1[1]:rect_pt2[1] , rect_pt1[0]:rect_pt2[0]]
     cropped_gray = cv2.cvtColor(cropped, cv2.COLOR_BGR2GRAY)
-        
+    
+    #Implementing Image Enhancement Techniques here       
+    
+    
     if count%50==0:
         count=0
         cv2.rectangle(frame, rect_pt1, rect_pt2, color=(0,255,0))
